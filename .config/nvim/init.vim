@@ -58,6 +58,7 @@ autocmd BufRead,BufNewFile *.mom set tw=80
 autocmd BufRead,BufNewFile *.[1-9] set filetype=groff
 autocmd BufRead,BufNewFile *.[1-9] set tw=80
 autocmd BufRead,BufNewFile *.md set tw=80
+autocmd BufRead,BufNewFile *.txt set tw=80
 autocmd BufRead,BufNewFile *.b set filetype=brainfuck
 autocmd BufRead,BufNewFile *.bf set filetype=brainfuck
 
