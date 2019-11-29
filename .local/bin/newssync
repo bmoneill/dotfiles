@@ -1,0 +1,3 @@
+#!/bin/sh
+
+[ -z "$(pgrep newsboat)" ] && newsboat -x reload

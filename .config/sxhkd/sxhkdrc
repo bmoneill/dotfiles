@@ -1,0 +1,54 @@
+super + Return
+	$TERMINAL
+super + p
+	dmenu_run
+super + w
+	$BROWSER
+super + shift + w
+	icecat
+super + n
+	$TERMINAL nmtui
+super + shift + n
+	$TERMINAL vifm
+super + x
+	slock
+super + shift + x
+	passmenu
+super + e
+	$TERMINAL $EMAIL
+super + shift + e
+	$TERMINAL weechat
+super + r
+	$TERMINAL newsboat
+super + shift + r
+	$TERMINAL tremc
+super + shift + t
+	$TERMINAL bc -l
+super + a
+	$TERMINAL ncmpcpp
+super + shift + a
+	$TERMINAL pulsemixer
+super + s
+	duck
+super + shift + p
+	$TERMINAL castero
+super + comma
+	mpc prev
+super + period
+	mpc next
+super + slash
+	mpc toggle && refbar
+super + shift + slash
+	whatsong
+super + c
+	$TERMINAL calcurse
+super + shift + c
+	$TERMINAL htop
+super + o
+	refbar
+XF86AudioMute
+	pulsemixer --toggle-mute && refbar
+XF86Audio{Raise,Lower}Volume
+	pulsemixer --change-volume {+,-}5 && refbar
+Print
+	maim ~/pics/screenshot-$(date '+%y%m%d-%H%M-%S').png

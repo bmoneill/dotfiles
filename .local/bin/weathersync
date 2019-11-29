@@ -1,0 +1,5 @@
+#!/bin/sh
+
+location="Boston"
+
+curl -s "wttr.in/$location" > "$HOME/.local/share/weather"

@@ -1,0 +1,4 @@
+#!/bin/sh
+sed '16q;d' "$HOME/.local/share/weather" | grep -wo "[0-9]*%" | sort -n | sed -e '$!d' | sed -e "s/^/$(tput setaf 7) /g" | tr -d '\n'
+sed '13q;d' "$HOME/.local/share/weather" | grep -o "m\\(-\\)*[0-9]\\+" | sort -n -t 'm' -k 2n | sed -e 1b -e '$!d' | tr '\n|m' ' ' | awk '{print " ",$1 "°","",$2 "°"}' | sed "s//$(tput setaf 4)/g" | sed "s//$(tput setaf 3)/g"
+echo -n "$(tput sgr0)"
