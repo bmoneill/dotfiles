@@ -1,9 +1,11 @@
+#sxhkd
+
 super + Return
 	$TERMINAL
 super + p
 	dmenu_run
 super + w
-	$BROWSER
+	tabbed -r 2 surf -e a
 super + shift + w
 	icecat
 super + n
@@ -21,8 +23,8 @@ super + shift + e
 super + r
 	$TERMINAL newsboat
 super + shift + r
-	$TERMINAL tremc
-super + shift + t
+	$TERMINAL stig
+super + t
 	$TERMINAL bc -l
 super + a
 	$TERMINAL ncmpcpp
@@ -30,8 +32,6 @@ super + shift + a
 	$TERMINAL pulsemixer
 super + s
 	duck
-super + shift + p
-	$TERMINAL castero
 super + comma
 	mpc prev
 super + period
@@ -45,10 +45,36 @@ super + c
 super + shift + c
 	$TERMINAL htop
 super + o
-	refbar
+	$TERMINAL tuir
+super + g
+	gimp
+super + shift + g
+	lmms
+super + i
+	inkscape
+super + shift + i
+	kdenlive
 XF86AudioMute
 	pulsemixer --toggle-mute && refbar
 XF86Audio{Raise,Lower}Volume
 	pulsemixer --change-volume {+,-}5 && refbar
 Print
 	maim ~/pics/screenshot-$(date '+%y%m%d-%H%M-%S').png
+
+# bspwm
+super + shift + q
+	bspc quit
+super + q
+	bspc node -k
+super + {h,j,k,l}
+	bspc node -f {west,south,north,east}
+super + l
+	bspc node -s below
+super + {_,shift + }{1-9}
+	bspc {desktop -f,node -d} '^{1-9}'
+super + m
+	bspc desktop -l next
+
+# polybar
+super + b
+	polybar-msg cmd toggle
