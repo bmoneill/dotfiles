@@ -1,5 +1,4 @@
-#sxhkd
-
+# programs
 super + Return
 	$TERMINAL
 super + p
@@ -10,8 +9,6 @@ super + shift + w
 	icecat
 super + n
 	$TERMINAL nmtui
-super + shift + n
-	$TERMINAL vifm
 super + x
 	slock
 super + shift + x
@@ -37,7 +34,7 @@ super + comma
 super + period
 	mpc next
 super + slash
-	mpc toggle && refbar
+	mpc toggle
 super + shift + slash
 	whatsong
 super + c
@@ -46,34 +43,32 @@ super + shift + c
 	$TERMINAL htop
 super + o
 	$TERMINAL tuir
-super + g
-	gimp
-super + shift + g
-	lmms
-super + i
-	inkscape
-super + shift + i
-	kdenlive
 XF86AudioMute
-	pulsemixer --toggle-mute && refbar
+	pulsemixer --toggle-mute
 XF86Audio{Raise,Lower}Volume
-	pulsemixer --change-volume {+,-}5 && refbar
+	pulsemixer --change-volume {+,-}5
 Print
 	maim ~/pics/screenshot-$(date '+%y%m%d-%H%M-%S').png
+super + F{8,7}
+	pulsemixer --change-volume {+,-}5
+super + F6
+	pulsemixer --toggle-mute
 
 # bspwm
 super + shift + q
 	bspc quit
 super + q
 	bspc node -k
-super + {h,j,k,l}
-	bspc node -f {west,south,north,east}
+super + {_,shift} + {h,j,k,l}
+	bspc node {-f,-s} {west,south,north,east}
 super + l
 	bspc node -s below
 super + {_,shift + }{1-9}
 	bspc {desktop -f,node -d} '^{1-9}'
 super + m
 	bspc desktop -l next
+super + f
+	bspc node -t \~fullscreen
 
 # polybar
 super + b
