@@ -1,5 +1,6 @@
 #!/bin/sh
 
-location="Boston"
+# enter your location here if it reports it wrong
+location=""
 
 curl -s "wttr.in/$location" > "$HOME/.local/share/weather"

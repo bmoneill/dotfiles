@@ -1,0 +1,3 @@
+#!/bin/sh
+
+[ -z "$1" ] && echo "no file supplied" || smu $1 | lynx -stdin

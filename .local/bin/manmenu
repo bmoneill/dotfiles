@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Search for man pages
+
+manpath="$(manpath)"
+
+chosen=$(apropos '.*' | tr -s ' ' | awk -F ' ' '{OFS=" "; print $1 $2}' | dmenu)
+
+[ -z "$chosen" ] && exit
+
+chosen=$(find "$locmanpath/$chosen" "$manpath/$chosen" -type f \
+	| awk -F "/" '{OFS="/";print $NF}' | sed 's/\.gz//' \
+	| sort -d | uniq | dmenu)
+
+[ -z "$chosen" ] && exit
+
+$TERMINAL man $chosen

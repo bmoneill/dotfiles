@@ -16,6 +16,8 @@ export IMAGE="sxiv"
 export READER="zathura"
 export TERMINAL="st"
 
+export MAKEFLAGS="-j3"
+
 # less stuff
 export LESS=-R
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink

@@ -1,6 +1,0 @@
-#!/bin/sh
-
-pgrep -u "$USER" >/dev/null || { echo "$USER not logged in; sync will not run."; exit ;}
-
-mbsync -a
-notmuch new

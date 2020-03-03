@@ -1,0 +1,6 @@
+#!/bin/sh
+
+RSSCONF="$HOME/.config/newsboat/urls"
+[ -z "$1" ] && echo "Provide a URL to add" && exit
+
+echo "$1" >> $RSSCONF

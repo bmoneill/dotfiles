@@ -1,0 +1,48 @@
+.TH "STATUSBAR" "1" "November 2019" "Ben's Misc Scripts" "User Commands"
+.SH NAME
+statusbar \- status bar
+.SH SYNOPSIS
+.B statusbar
+.SH DESCRIPTION
+statusbar uses components to  provide status bar text. It loads the components
+from ~/.config/statusbar.conf. The file should contain the COMPONENTS
+variable, which is as a shell script. The COMPONENTS variable should contain a
+space seperated component list.
+.SH COMPONENTS
+.TP
+.B BAT
+Shows battery percentage.
+.TP
+.B MAIL
+Shows number of unread emails in ~/.local/share/mail.
+.TP
+.B MPD
+Shows MPD status (Playing/Paused).
+.TP
+.B RAM
+Shows the amount of RAM used.
+.TP
+.B RSS
+Shows the amount of unread RSS feed entries in Newsboat.
+.TP
+.B TIME
+Shows the current time.
+.TP
+.B SND
+Shows the audio volume from PulseAudio.
+.TP
+.B WIFI
+Shows WiFi connection strength.
+.SH AUTHOR
+Written by Ben O'Neill <ben@benoneill.xyz>.
+.SH BUGS
+If any bugs are found, email the author.
+.SH COPYRIGHT
+Copyright \(co 2019 Ben O'Neill <ben@benoneill.xyz>. License: GNU GPLv3+: GNU GPL
+version 3 or later. <https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it. There is NO
+WARRANTY, to the extent permitted by law.
+.SH SEE ALSO
+.BR mpd (1),
+.BR newsboat (1),
+.BR pulseaudio (1)

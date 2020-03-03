@@ -1,8 +1,12 @@
 # programs
 super + Return
 	$TERMINAL
+super + shift + Return
+	emacs
 super + p
 	dmenu_run
+super + shift + p
+	$TERMINAL castero
 super + w
 	tabbed -r 2 surf -e a
 super + shift + w
@@ -23,6 +27,8 @@ super + shift + r
 	$TERMINAL stig
 super + t
 	$TERMINAL bc -l
+super + shift + t
+	$TERMINAL toot tui
 super + a
 	$TERMINAL ncmpcpp
 super + shift + a
@@ -43,6 +49,11 @@ super + shift + c
 	$TERMINAL htop
 super + o
 	$TERMINAL tuir
+super + i
+	manmenu
+
+super + d
+	transset-df -pt 0.85
 XF86AudioMute
 	pulsemixer --toggle-mute
 XF86Audio{Raise,Lower}Volume

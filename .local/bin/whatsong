@@ -1,0 +1,3 @@
+#!/bin/sh
+
+mpc status | grep "playing" >/dev/null && notify-send "Song:" "$(mpc current)" || notify-send "Song:" "No song currently playing"

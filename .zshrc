@@ -1,4 +1,6 @@
-# Luke's config for the Zoomer Shell
+# Ben's config for the Zoomer Shell (based off Luke Smith's)
+
+PROMPT_EOL_MARK=''
 
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
@@ -28,13 +30,13 @@ export KEYTIMEOUT=1
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]] ||
      [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
+    echo -ne "\e[1 q"
 
   elif [[ ${KEYMAP} == main ]] ||
        [[ ${KEYMAP} == viins ]] ||
        [[ ${KEYMAP} = '' ]] ||
        [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
+    echo -ne "\e[5 q"
   fi
 }
 zle -N zle-keymap-select
@@ -46,9 +48,9 @@ zle-line-init() {
 zle -N zle-line-init
 
 # Use beam shape cursor on startup.
-echo -ne '\e[5 q'
+echo -ne "\e[5 q"
 # Use beam shape cursor for each new prompt.
-preexec() { echo -ne '\e[5 q' ;}
+preexec() { echo -ne "\e[5 q" ;}
 
 # Use lf to switch directories and bind it to ctrl-o
 lfcd () {

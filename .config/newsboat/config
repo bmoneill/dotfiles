@@ -34,11 +34,11 @@ color listfocus_unread yellow default bold
 color info red black bold
 color article cyan default
 
-browser linkhandler
+browser icecat
 macro , open-in-browser
-macro t set browser "tsp youtube-dl --add-metadata -ic"; open-in-browser ; set browser linkhandler
-macro a set browser "tsp youtube-dl --add-metadata -xic -f bestaudio/best"; open-in-browser ; set browser linkhandler
+macro t set browser "youtube-dl --add-metadata -ic"; open-in-browser ; set browser linkhandler
+macro a set browser "youtube-dl --add-metadata -xic -f bestaudio/best"; open-in-browser ; set browser linkhandler
 macro v set browser "setsid nohup mpv"; open-in-browser ; set browser linkhandler
-macro w set browser "w3m"; open-in-browser ; set browser linkhandler
+macro w set browser "lynx -vikeys"; open-in-browser ; set browser linkhandler
 macro p set browser "dmenuhandler"; open-in-browser ; set browser linkhandler
 macro c set browser "xsel -b <<<" ; open-in-browser ; set browser linkhandler

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+bmfile="$HOME/.config/binmenu"
+[ -z "$1" ] || bmfile="$1"
+[ -f "$bmfile" ] || (echo "file doesn't exist" && exit)
+
+chosen=$(cut -f1 -d "," <$bmfile | grep '[^[:blank:]]' | dmenu -i)
+
+[ -z $chosen ] && exit
+
+eval $(cat "$bmfile" | grep "$chosen," | cut -f2 -d ",")

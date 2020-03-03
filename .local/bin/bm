@@ -1,0 +1,57 @@
+#!/bin/sh
+
+[ -z "$BOOKPATH" ] && BOOKPATH="$HOME/.config/bookmarks"
+
+add() { \
+	[ -z "$1" ] && echo "must provide name and url" && exit
+	[ -z "$2" ] && echo "must provide url" && exit
+	echo "$1,$2" >> "$BOOKPATH";
+}
+
+go() { \
+	[ -z "$1" ] && echo "must provide bookmark name" && exit
+	url=$(grep -i "$1," "$BOOKPATH" | awk -F "," '{OFS=",";print $2}')
+	[ -z "$url" ] && echo "invalid bookmark" && exit
+	$BROWSER $url
+}
+
+list() { \
+	[ -z "$1" ] && sep=": "
+	for line in $(sed 's/ /|/g' "$BOOKPATH"); do
+		echo "$(echo $line | sed 's/,.*//' | sed 's/|/ /g')$sep$([ -z "$1" ] && echo $line | sed 's/.*,//g')"
+	done
+}
+
+menu() { \
+	chosen=$(echo "$(list nourl)" | sort | dmenu -i -l 20 -p "bm:")
+	[ -z "$chosen" ] || go "$chosen"
+}
+
+remove() { \
+	[ -z "$1" ] && echo "must provide bookmark name" && exit
+	bookmarks=$(sed "s/,.*//" "$BOOKPATH")
+	line=$(echo "$bookmarks" | grep -inx "$1" | awk -F ":" '{OFS=":";print $1}')
+	sedcmd="D"
+	[ -z "$line" ] && echo "unknown bookmark" && exit
+	sed -i "$line$sedcmd" "$BOOKPATH"
+}
+
+rename() { \
+	[ -z "$2" ] && echo "must provide both original and new name" && exit
+	[ -z $(grep -i "$1," "$BOOKPATH") ] && echo "unknown bookmark" && exit
+	sed -i "s/$1,/$2,/Ig" "$BOOKPATH"
+}
+
+urls() { \
+	for url in $(sed "s/.*,/\n/" "$BOOKPATH"); do echo $url; done
+}
+
+[ "$1" = "add" ] && add $2 $3 && exit
+[ "$1" = "go" ] && go $2 && exit
+[ "$1" = "list" ] && list $2 && exit
+[ "$1" = "menu" ] && menu && exit
+[ "$1" = "remove" ] && remove $2 && exit
+[ "$1" = "rename" ] && rename $2 $3 && exit
+[ "$1" = "urls" ] && urls && exit
+
+echo "usage: bm [add|go|list|menu|remove|rename|urls] [bookmark...]"

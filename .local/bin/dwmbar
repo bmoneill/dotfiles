@@ -1,0 +1,14 @@
+#!/bin/sh
+
+trap 'update' 5
+
+update() { \
+	xsetroot -name "$(statusbar | sed 1d | tr '\n' ' ')" &
+	wait
+}
+
+while :; do
+	update
+	sleep 15s &
+	wait
+done

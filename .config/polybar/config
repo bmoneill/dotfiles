@@ -75,17 +75,6 @@ wm-restack = bspwm
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
 
-[module/mutt-wizard]
-
-type = custom/script
-exec = mailbox
-interval = 5
-format-prefix = " "
-format-underline = ${colors.red}
-
-click-left = st -e neomutt
-
-
 [module/weather]
 
 type = custom/script
@@ -235,7 +224,7 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wls1
+interface = wlp2s0
 interval = 3.0
 
 format-connected = 直 <label-connected>
@@ -379,7 +368,7 @@ type = custom/menu
 
 format-spacing = 1
 
-label-open = 
+label-open = c
 label-open-foreground = ${colors.darkmagenta}
 label-close =  cancel
 label-close-foreground = ${colors.darkmagenta}
