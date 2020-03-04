@@ -8,7 +8,7 @@ super + p
 super + shift + p
 	$TERMINAL castero
 super + w
-	tabbed -r 2 surf -e a
+	surf-browse
 super + shift + w
 	icecat
 super + n
