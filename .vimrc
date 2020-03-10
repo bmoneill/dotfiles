@@ -1,10 +1,10 @@
-" Ben O'Neill's vimrc
-
 set encoding=utf-8
+let mapleader = ","
 
 syntax on
 set ttyfast
 set lazyredraw
+set noswapfile
 
 " ui
 set wildmenu
@@ -41,20 +41,8 @@ function! ConditionalPairMap(open, close)
 endf
 inoremap <expr> /* ConditionalPairMap('/* ', ' */')
 inoremap <expr> ( ConditionalPairMap('(', ')')
-inoremap <expr> { ConditionalPairMap('{ ', ' }')
+inoremap <expr> { ConditionalPairMap('{', '}')
 inoremap <expr> [ ConditionalPairMap('[', ']')
-
-set runtimepath+=~/.vim/bundle/*
-call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundleFetch 'felipec/notmuch-vim'
-NeoBundleFetch 'ycm-core/YouCompleteMe'
-NeoBundleFetch 'kmyk/brainfuck-highlight.vim'
-NeoBundleFetch 'junegunn/fzf.vim'
-NeoBundleFetch 'scrooloose/nerdtree'
-NeoBundleFetch 'tpope/vim-fugitive'
-NeoBundleFetch 'vim-airline/vim-airline'
-call neobundle#end()
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd BufRead,BufNewFile *.ms set filetype=groff
@@ -76,14 +64,3 @@ if &term =~ '^st-256color'
 	let &t_EI = "\e[2 q"
 	autocmd VimEnter * silent !echo -ne "\e[2 q"
 endif
-
-" NeoBundle plugin configuration
-let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir', 'tmux', 'mpc']
-
-let mapleader = ","
-nnoremap <leader>a :CtrlPMpc<CR>
-nnoremap <leader>c :Git commit<CR>
-nnoremap <leader>g :Git add %<CR>
-nnoremap <leader>e :tabnew<CR>:NotMuch<CR>
-nnoremap <leader>n :NERDTree<CR>
-nnoremap <leader>v :!groff -ms -Tpdf % \| zathura - <CR><CR>
