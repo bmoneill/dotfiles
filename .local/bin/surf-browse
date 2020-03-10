@@ -1,7 +1,6 @@
 #!/bin/sh
 #
-# Slightly modified from surf(1) git repo. Licensed under the MIT
-# license.
+# See the LICENSE file for copyright and license details. 
 #
 
 xidfile="/tmp/tabbed-surf.xid"
