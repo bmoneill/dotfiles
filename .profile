@@ -5,11 +5,11 @@ export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin"
 
 export SUDO_ASKPASS="/usr/local/bin/dmenupass"
 
-# default $PS1 (not for bash)
+# default $PS1 (not for zsh)
 export PS1="$ "
 
 # default programs
-export BROWSER="tabbed -r 2 surf -e a"
+export BROWSER="surf-browse"
 export EDITOR="vim"
 export EMAIL="neomutt"
 export IMAGE="sxiv"
