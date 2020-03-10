@@ -33,7 +33,6 @@ bspc rule -a St:$dropdownname state=floating
 
 bspc config external_rules_command "$(which floaters)"
 
-bspc rule -a Emacs state=tiled
 bspc rule -a Zathura state=tiled
 
 sxhkd &
