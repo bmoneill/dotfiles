@@ -1,7 +1,7 @@
 #!/bin/sh
-# See COVID-19 statistics for a country or state/territory
+# See COVID-19 statistics for the world, a country, or state/territory.
 
-[ -z $1 ] && country="US" || country="$1"
+[ -z $1 ] && country="World" || country="$1"
 [ -z $2 ] || state="$2"
 
 ([ ! -f ~/.local/share/corona ] || [ "$(stat -c "%y" ~/.local/share/corona 2>/dev/null | cut -d ' ' -f1)" != "$(date '+%Y-%m-%d')" ]) &&
