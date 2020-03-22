@@ -1,4 +1,14 @@
 #!/bin/sh
-sed '16q;d' "$HOME/.local/share/weather" | grep -wo "[0-9]*%" | sort -n | sed -e '$!d' | sed -e "s/^/$(tput setaf 7)Precipitation Chance: /g"
-sed '13q;d' "$HOME/.local/share/weather" | grep -o "m\\(-\\)*[0-9]\\+" | sort -n -t 'm' -k 2n | sed -e 1b -e '$!d' | tr -d '|m' | tr '\n' ' ' | awk '{print "Low: " $1 "°\n" "High: " $2 "°"}'
-echo -n "$(tput sgr0)"
+
+basedir="$HOME/.local/share/weather"
+
+mkdir -p $basedir || exit
+
+[ -z $1 ] && location="Boston" || location="$1"
+
+[ "$2" = "sync" ] && curl -s "wttr.in/$location" > $basedir/$location
+
+[ ! -f $basedir/$location ] && curl -s "wttr.in/$location" > $basedir/$location
+
+sed '16q;d' "$HOME/.local/share/weather/$location" | grep -wo "[0-9]*%" | sort -n | sed -e '$!d' | sed -e "s/^/Rain chance: /g"
+sed '13q;d' "$HOME/.local/share/weather/$location" | grep -o "m\\(-\\)*[0-9]\\+" | sort -n -t 'm' -k 2n | sed -e 1b -e '$!d' | tr '\n|m' ' ' | awk '{print "Low: ",$1 "°"; print "High: ",$2 "°"}'
