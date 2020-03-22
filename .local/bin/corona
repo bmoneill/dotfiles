@@ -1,21 +1,30 @@
 #!/bin/sh
 # See COVID-19 statistics for the world, a country, or state/territory
 
+basedir="$HOME/.local/share/corona"
+
 [ -z $1 ] && country="World" || country="$1"
 [ -z $2 ] || state="$2"
 
+mkdir -p $basedir || exit
 
-([ ! -f ~/.local/share/corona ] || [ "$(stat -c "%y" ~/.local/share/corona 2>/dev/null | cut -d ' ' -f1)" != "$(date '+%Y-%m-%d')" ]) &&
-	curl -s https://corona-stats.online > ~/.local/share/corona
+([ "$state" = "sync" ] || [ ! -f $basedir/$country ]) && curl -s https://corona-stats.online/$country > $basedir/$country
 
-[ ! -z $state ] && ([ ! -f ~/.local/share/corona_$country ] || ([ $(stat -c "%y" ~/.local/share/corona_$country 2>/dev/null | cut -d ' ' -f1) != $(date '+%Y-%m-%d') ])) &&
-	curl -s https://corona-stats.online/$country > ~/.local/share/corona_$country
+[ "$state" = "sync" ] && exit
 
-[ -z $state ] && file=~/.local/share/corona || file=~/.local/share/corona_$country
+[ $country = "ls" ] &&  sed -r 's/║//g;s/\s*//g;s/│/|/g;s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g' ~/.local/share/corona/World | awk -F '|' '{print $2}' | sed '/^\s*$/d;s/\*//' | sort | uniq && exit
+
+
+([ ! -f $basedir/$country ] || [ "$(stat -c "%y" $basedir/$country 2>/dev/null | cut -d ' ' -f1)" != "$(date '+%Y-%m-%d')" ]) &&
+	curl -s https://corona-stats.online/$country > $basedir/$country
+
+[ ! -z $state ] && [ $(stat -c "%y" $basedir/$country 2>/dev/null | cut -d ' ' -f1) != $(date '+%Y-%m-%d') ] &&
+	curl -s https://corona-stats.online/$country > $basedir/$country
+
+[ -z $state ] && file=$basedir/World || file=$basedir/$country
 
 [ -z $state ] && grep_query="$country" || grep_query="$state"
 
-[ $country = "ls" ] &&  sed -r 's/║//g;s/\s*//g;s/│/|/g;s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g' ~/.local/share/corona | awk -F '|' '{print $2}' | sed '/^\s*$/d;s/\*//' | sort | uniq && exit
 
 stats="$(grep "$grep_query" $file | sed -r 's/║//g;s/\s*//g;s/│/|/g;s/\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]//g')"
 
