@@ -1,0 +1,5 @@
+#!/bin/sh
+
+unread="$(find ~/.local/share/mail/*/INBOX/new/* -type f | wc -l 2>/dev/null)"
+
+echo "📬 $unread$(cat "/tmp/imapsyncicon_$USER" 2>/dev/null)"
