@@ -1,12 +1,18 @@
-#!/bin/sh
-
 # add ~/.local/bin to $PATH
-export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/bin/bar"
 
-export SUDO_ASKPASS="/usr/local/bin/dmenupass"
+# XDG stuff
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
 
-# default $PS1 (not for zsh)
-export PS1="$ "
+export GIT_SSH_COMMAND="ssh -F $XDG_CONFIG_HOME/ssh/config -i $XDG_CONFIG_HOME/ssh/id_rsa"
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export VIMINIT=":source $XDG_CONFIG_HOME"/vim/vimrc
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
+export NOTMUCH_CONFIG="$XDG_CONFIG_HOME"/notmuch/notmuchrc
+export NMBGIT="$XDG_DATA_HOME"/notmuch/nmbug
+export WEECHAT_HOME="$XDG_CONFIG_HOME"/weechat
 
 # default programs
 export BROWSER="surf-browse"
@@ -16,7 +22,7 @@ export IMAGE="sxiv"
 export READER="zathura"
 export TERMINAL="st"
 
-export MAKEFLAGS="-j3"
+export MAKEFLAGS="-j2"
 
 # less stuff
 export LESS=-R
@@ -28,10 +34,7 @@ export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
 export LESS_TERMCAP_us=$'\E[1;35m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 
-# load bashrc only if in bash
-echo "$0" | grep "bash$" >/dev/null && [ -f ~/.bashrc ] && source "$HOME/.bashrc"
+[ -f $XDG_CONFIG_HOME/aliasrc ] && . "$XDG_CONFIG_HOME/aliasrc"
 
-[ -f ~/.config/aliasrc ] && source "$HOME/.config/aliasrc"
-
-# start X11 if not already started
+# start X11 if in tty1 and not already started
 [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x Xorg >/dev/null && exec startx
