@@ -1,14 +1,20 @@
 #!/bin/sh
 
 # colors
-alias ls="ls -h --group-directories-first --color=auto"
+alias ls="ls --group-directories-first --color=auto"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias less="less -R"
 
+# xdg shortcuts
+alias abook="abook -C $HOME/.config/abook/abookrc --datafile $HOME/.config/abook/addressbook"
+alias calcurse="calcurse -C $HOME/.config/calcurse -D $HOME/.local/share/calcurse"
+alias ssh="ssh -F $XDG_CONFIG_HOME/ssh/config -i $XDG_CONFIG_HOME/ssh/id_rsa"
+
 # shortcuts
-alias pq="pacman -Qett | less"
 alias yt="youtube-dl --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'"
 alias yta="yt -x -f bestaudio/best"
-alias mutt="neomutt"
-alias abook="abook -C $HOME/.config/abook/abookrc --datafile $HOME/.config/abook/addressbook"
+alias searx="sr searx"
+
+# other
+alias lynx="lynx -vikeys"

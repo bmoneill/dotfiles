@@ -1,0 +1,6 @@
+#!/bin/sh
+# view a roff document
+
+PATH="$PLAN9/bin:$PATH"
+
+troff -ms | tr2post | zathura -

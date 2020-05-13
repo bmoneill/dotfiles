@@ -1,4 +1,0 @@
-#!/bin/sh
-
-pkill -SIGTRAP dvtmbar
-pkill -SIGTRAP dwmbar

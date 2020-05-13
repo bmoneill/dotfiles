@@ -4,7 +4,7 @@
 #
 
 xidfile="/tmp/tabbed-surf.xid"
-uri=""
+uri="https://search.disroot.org"
 
 if [ "$#" -gt 0 ];
 then

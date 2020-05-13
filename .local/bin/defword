@@ -1,5 +1,0 @@
-#!/bin/sh
-
-[ -z "$1" ] && echo "must provide a word to define." && exit
-
-dico -d en-wiktionary "$1" | less

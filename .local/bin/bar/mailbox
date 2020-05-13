@@ -1,5 +1,5 @@
 #!/bin/sh
 
-unread="$(find ~/.local/share/mail/*/INBOX/new/* -type f | wc -l 2>/dev/null)"
+unread="$(notmuch search tag:unread | wc -l)"
 
 echo "📬 $unread$(cat "/tmp/imapsyncicon_$USER" 2>/dev/null)"

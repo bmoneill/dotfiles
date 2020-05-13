@@ -1,3 +1,0 @@
-#!/bin/sh
-
-ccat $@ | nl -b a | less

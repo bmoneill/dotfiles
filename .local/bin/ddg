@@ -1,0 +1,8 @@
+#!/bin/sh
+# search via duckduckgo
+
+[ -z "$1" ] || sr duckduckgo "$1" >/dev/null
+[ -z "$1" ] || exit
+
+term=$(echo | dmenu -p "duckduckgo:" </dev/null)
+[ -z "$term" ] || sr duckduckgo "$term" >/dev/null

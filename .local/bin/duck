@@ -1,7 +1,0 @@
-#!/bin/sh
-
-[ -z "$1" ] || sr duckduckgo.com/html "$1" >/dev/null
-[ -z "$1" ] || exit
-
-term=$(echo | dmenu -p "duckduckgo:")
-[ -z "$term" ] || sr duckduckgo.com/html "$term" >/dev/null

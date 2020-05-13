@@ -1,0 +1,5 @@
+#!/bin/sh
+
+res="$(dmenu -p 'searx' </dev/null)"
+
+[ ! -z "$res" ] && searx "$res"

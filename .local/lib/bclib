@@ -1,0 +1,5 @@
+define r(d) {
+	auto n
+	n = d * 180 / (4*a(1))
+	return n
+}

@@ -1,5 +1,0 @@
-#!/bin/sh
-
-[ -z "$1" ] && aspell list | sort -u -f && exit
-
-aspell list < $1 | sort -u -f
