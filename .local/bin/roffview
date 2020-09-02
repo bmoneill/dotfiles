@@ -3,4 +3,4 @@
 
 PATH="$PLAN9/bin:$PATH"
 
-troff -ms | tr2post | zathura -
+troff -ms $@ | tr2post | zathura -
