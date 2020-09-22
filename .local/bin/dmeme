@@ -1,0 +1,24 @@
+#!/bin/sh
+# dmenu meme generator
+# dependencies: gomeme <https://github.com/jpoz/gomeme>
+# usage: dmeme [infile] [outfile]
+
+# directory to get pictures from
+[ -z "$picdir" ] || picdir="$HOME/pics"
+
+if [ -z "$1" ]; then
+	infile="$picdir/$(ls "$picdir" | dmenu -p "infile:")"
+else
+	infile="$1"
+fi
+
+if [ -z "$2" ]; then
+	outfile="$(dmenu -p "outfile:" </dev/null)"
+else
+	outfile="$2"
+fi
+
+toptext="$(dmenu -p "top:" </dev/null)"
+bottext="$(dmenu -p "bottom:" </dev/null)"
+
+gomeme -fs 72 -t "$toptext" -b "$bottext" "$infile" "$outfile"
