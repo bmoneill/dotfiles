@@ -3,17 +3,17 @@
 # dependencies: gomeme <https://github.com/jpoz/gomeme>
 # usage: dmeme [infile] [outfile]
 
-# directory to get pictures from
-[ -z "$picdir" ] || picdir="$HOME/pics"
+# directory to get pictures from, change accordingly
+[ -z "$picdir" ] && picdir="$HOME/pics"
 
 if [ -z "$1" ]; then
-	infile="$picdir/$(ls "$picdir" | dmenu -p "infile:")"
+	infile="$picdir/$(ls "$picdir" | dmenu -l 20 -p "infile:")"
 else
 	infile="$1"
 fi
 
 if [ -z "$2" ]; then
-	outfile="$(dmenu -p "outfile:" </dev/null)"
+	outfile="$picdir/$(dmenu -l 20 -p "outfile:" </dev/null)"
 else
 	outfile="$2"
 fi
