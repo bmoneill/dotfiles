@@ -1,5 +1,3 @@
-#sxhkdrc
-
 super + Return
 	$TERMINAL
 super + shift + Return
@@ -7,7 +5,9 @@ super + shift + Return
 super + p
 	dmenu_run
 super + w
-	surf-browse
+	$BROWSER
+super + shift + w
+	$TERMINAL tuir
 super + n
 	$TERMINAL nmtui
 super + x
@@ -16,8 +16,12 @@ super + shift + x
 	passmenu
 super + e
 	$TERMINAL $EMAIL; pkill -RTMIN+12 dwmblocks
+super + shift + e
+	$TERMINAL tmux -L weechat attach
 super + r
 	$TERMINAL newsboat
+super + shift + r
+	$TERMINAL toot tui
 super + v
 	dmenucalc
 super + a
@@ -51,16 +55,21 @@ Print
 shift + Print
 	maimpick
 
-#dwm
-super + shift + {q,r}
-	bspc {quit,wm -r}
-super + q
-	bspc node -c
-super + m
-	bspc desktop -l next
-super + {_,shift + }{h,j,k,l}
-	bspc node -{f,s} {west,south,north,east}
+super + {_,shift + } q
+	dwmc {killclient,quit}
+super + {h,l}
+	dwmc incnmaster {+,-}1
+super + {j,k}
+	dwmc focusstack {+,-}1
 super + {_,shift + }{1-9}
-	bspc {desktop -f,node -d} '^{1-9}'
+	dwmc {viewex,tagex} {0-8}
+super + 0
+	dwmc viewall
+super + t
+	dwmc setlayoutex 0
+super + f
+	dwmc togglefloating
+super + m
+	dwmc setlayoutex 2
 super + b
-	polybar toggle
+	dwmc togglebar
