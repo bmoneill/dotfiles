@@ -14,7 +14,6 @@ alias ssh="ssh -F $XDG_CONFIG_HOME/ssh/config -i $XDG_CONFIG_HOME/ssh/id_rsa"
 # shortcuts
 alias yt="youtube-dl --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'"
 alias yta="yt -x -f bestaudio/best"
-alias searx="sr searx"
 
 # other
 alias lynx="lynx -vikeys"

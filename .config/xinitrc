@@ -6,5 +6,6 @@ sxhkd &
 unclutter &
 xcompmgr &
 xwallpaper --zoom $HOME/.config/wallpaper.jpg
+dwmblocks &
 
 exec bspwm
