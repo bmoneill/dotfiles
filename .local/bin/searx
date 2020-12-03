@@ -72,7 +72,7 @@ case "$SURFRAW_searx_categories" in
     files*)     category="files"          ;;
     *)          category="general"        ;;
 esac
-searx_url="https://search.disroot.com"
+searx_url="https://search.disroot.org"
 # w3_args now contains a list of arguments
 escaped_args=$(w3_url_of_arg $w3_args)
 
