@@ -1,9 +1,0 @@
-#!/bin/sh
-
-# i3blocks newsboat module.
-# Displays number of unread news items and an loading icon if updating.
-# When clicked, brings up `newsboat`.
-
-[ -f /tmp/newsupdate ] && echo $(cat ~/.config/newsboat/.unread | awk '{ print "📰 " $1}' | sed s/^0$//g) $(cat /tmp/newsupdate) && exit
-
-echo $(cat ~/.config/newsboat/.unread | awk '{ print "📰 " $1}' | sed s/^0$//g)

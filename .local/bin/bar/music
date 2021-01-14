@@ -1,3 +1,0 @@
-#!/bin/sh
-
-echo "🎵 $(mpc current | fmt -w 40 | sed -n '2s/.*/.../;1,2p' | tr -d '\n')"
