@@ -2,10 +2,8 @@
 
 xset r rate 300 50
 dunst &
-sxhkd &
 unclutter &
 xcompmgr &
-xwallpaper --zoom $HOME/.config/wallpaper.jpg
-dwmblocks &
+slstatus &
 
-exec bspwm
+exec dwm

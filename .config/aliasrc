@@ -17,3 +17,4 @@ alias yta="yt -x -f bestaudio/best"
 
 # other
 alias lynx="lynx -vikeys"
+alias mailread="notmuch tag -unread tag:unread; mailsync"
