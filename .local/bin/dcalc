@@ -2,4 +2,4 @@
 # dmenu calculator
 
 eq="$(dmenu -p "calc:" </dev/null)"
-[ ! -z "$eq" ] && notify-send "calc" "$(echo "$eq" | bc -l $HOME/.local/lib/bclib | sed 's/-/\\-/')"
+[ ! -z "$eq" ] && notify-send "calc" "$(echo "$eq" | bc -l $HOME/.local/lib/bclib 2>&1 | sed 's/-/\\-/')"
