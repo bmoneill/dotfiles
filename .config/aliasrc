@@ -9,7 +9,7 @@ alias less="less -R"
 # xdg shortcuts
 alias abook="abook -C $HOME/.config/abook/abookrc --datafile $HOME/.config/abook/addressbook"
 alias calcurse="calcurse -C $HOME/.config/calcurse -D $HOME/.local/share/calcurse"
-alias ssh="ssh -F $XDG_CONFIG_HOME/ssh/config -i $XDG_CONFIG_HOME/ssh/id_rsa"
+alias wget="wget --hsts-file ~/dotfiles/config/wget/wget-hsts"
 
 # shortcuts
 alias yt="youtube-dl --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'"
@@ -18,3 +18,6 @@ alias yta="yt -x -f bestaudio/best"
 # other
 alias lynx="lynx -vikeys"
 alias mailread="notmuch tag -unread tag:unread; mailsync"
+alias irc="tmux -L weechat attach-session"
+alias mv="mv -i"
+alias rm="rm -I"

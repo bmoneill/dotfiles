@@ -1,21 +1,27 @@
+#!/bin/sh
+
+export PS1="$USER@$(cat /etc/hostname) \${PWD/#$HOME/'~'} $ "
+
 # add ~/.local/bin to $PATH
 export PATH="$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//'):$PATH"
-export PS1="$USER@$(hostname) $ "
+
 
 # XDG stuff
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 
-export WGETRC="$XDG_CONFIG_HOME"/wgetrc
+export WGETRC="$XDG_CONFIG_HOME"/wget/wgetrc
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
+export NOTMUCH_CONFIG="$XDG_CONFIG_HOME"/notmuch/notmuchrc
 export NMBGIT="$XDG_DATA_HOME"/notmuch/nmbug
 export WEECHAT_HOME="$XDG_CONFIG_HOME"/weechat
+export DVDCSS_CACHE="$XDG_DATA_HOME"/dvdcss
 export GOPATH="$XDG_DATA_HOME"/go
 
 # default programs
-export BROWSER="chromium"
+export BROWSER="librewolf"
 export EDITOR="nvim"
 export EMAIL="neomutt"
 export IMAGE="sxiv"
