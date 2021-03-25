@@ -4,7 +4,7 @@
 # usage: dmeme [infile] [outfile]
 
 # directory to get pictures from, change accordingly
-[ -z "$picdir" ] && picdir="$HOME/pics"
+[ -z "$picdir" ] && picdir="$HOME/pics/memes"
 
 if [ -z "$1" ]; then
 	infile="$picdir/$(ls "$picdir" | dmenu -l 20 -p "infile:")"
@@ -13,7 +13,7 @@ else
 fi
 
 if [ -z "$2" ]; then
-	outfile="$picdir/$(dmenu -l 20 -p "outfile:" </dev/null)"
+	outfile="/tmp/dmeme.tmp"
 else
 	outfile="$2"
 fi
@@ -22,3 +22,7 @@ toptext="$(dmenu -p "top:" </dev/null)"
 bottext="$(dmenu -p "bottom:" </dev/null)"
 
 gomeme -fs 72 -t "$toptext" -b "$bottext" "$infile" "$outfile"
+
+if [ -z "$2" ]; then
+	xclip -sel clip -t image/png -i "$outfile"
+fi
