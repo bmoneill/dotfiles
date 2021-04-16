@@ -1,0 +1,5 @@
+#!/bin/sh
+
+notename="$(dmenu -p "filename" </dev/null)"
+[ -z "$notename" ] && exec $EDITOR /tmp/notes
+$EDITOR "~/docs/notes/$notename"

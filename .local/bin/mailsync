@@ -1,11 +1,12 @@
 #!/bin/sh
+# mailsync: sync mail and give notification if there is new mail.
 
-# Sync mail and give notification if there is new mail.
+# check internet connection
 ping -q -c 1 1.1.1.1 > /dev/null || exit
 
-# Run only if user logged in (prevent cron errors)
+# make sure user is logged in to prevent cron errors
 pgrep -u "${USER:=$LOGNAME}" >/dev/null || { echo "$USER not logged in; sync will not run."; exit ;}
-# Run only if not already running in other instance
+# make sure it is not already syncing
 pgrep -x mbsync >/dev/null && { echo "mbsync is already running." ; exit ;}
 
 # Required to display notifications if run as a cronjob:
@@ -18,7 +19,7 @@ export NOTMUCH_CONFIG="$XDG_CONFIG_HOME"/notmuch/notmuchrc
 export NMBGIT="$XDG_DATA_HOME"/notmuch/nmbug
 export GNUPGHOME="$XDG_DATA_HOME"/gnupg
 
-# Check account for new mail. Notify if there is new content.
+# check account for new mail and notify if new content is found
 syncandnotify() {
 	acc="$(echo "$account" | sed "s/.*\///")"
 	mbsync -c "$XDG_CONFIG_HOME"/isync/mbsyncrc "$acc"
@@ -36,24 +37,20 @@ syncandnotify() {
 
 accounts="$(awk '/^Channel/ {print $2}' "$XDG_CONFIG_HOME"/isync/mbsyncrc)"
 
-echo " 🔃" > /tmp/imapsyncicon_"$USER"
-( pkill -RTMIN+12 dwmblocks >/dev/null 2>&1 ) 2>/dev/null
-
-# Parallelize multiple accounts
+# main loop
 for account in $accounts
 do
     syncandnotify &
 done
 
 wait
-rm -f /tmp/imapsyncicon_"$USER"
-( pkill -RTMIN+12 dwmblocks >/dev/null 2>&1 ) 2>/dev/null
 
 notmuch new 2>/dev/null
-notmuch tag +college from:"/University/" or from:"/College/" or "university" or "college" and folder:"xyz/INBOX"
+
+# tag mail from lists
 for list in $(cat ~/.local/share/mailinglists); do
-	notmuch tag +list to:"$list" and folder:"xyz/INBOX"
+	notmuch tag +list to:"$list"
 done
 
-#Create a touch file that indicates the time of the last run of mailsync
+# create a touch file that indicates the time of the last run of mailsync
 touch "$XDG_CONFIG_HOME/mutt/.mailsynclastrun"

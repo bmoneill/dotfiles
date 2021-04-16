@@ -1,13 +1,19 @@
 #!/bin/sh
-
-# Usage:
-# `$0`: Ask for recording type via dmenu
-# `$0 screencast`: Record both audio and screen
-# `$0 video`: Record only screen
-# `$0 audio`: Record only audio
-# `$0 kill`: Kill existing recording
+# dcast: record your screen
 #
-# If there is already a running instance, user will be prompted to end it.
+# usage: dcast [screencast|video|audio|kill]
+#
+# options:
+#   * screencast: record both audio and screen
+#   * video: record only screen
+#   * audio: record only audio
+#   * kill: kill existing recording
+# 
+# if no arguments are given, user will be prompted with recording options.
+#
+# notes:
+#
+#   * if there is already a running instance, user will be prompted to end it.
 
 updateicon() {
 	echo "$1" > /tmp/recordingicon

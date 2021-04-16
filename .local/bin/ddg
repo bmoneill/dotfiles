@@ -1,5 +1,6 @@
 #!/bin/sh
-# search via duckduckgo
+# ddg: search via duckduckgo
+# usage: ddg [keywords]
 
 [ -z "$1" ] || sr duckduckgo "$1" >/dev/null
 [ -z "$1" ] || exit

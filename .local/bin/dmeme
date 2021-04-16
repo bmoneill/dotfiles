@@ -1,10 +1,10 @@
 #!/bin/sh
-# dmenu meme generator
-# dependencies: gomeme <https://github.com/jpoz/gomeme>
+# dmeme: generate memes with dmenu
 # usage: dmeme [infile] [outfile]
+# dependencies: gomeme <https://github.com/jpoz/gomeme>
 
 # directory to get pictures from, change accordingly
-[ -z "$picdir" ] && picdir="$HOME/pics/memes"
+[ -z "$picdir" ] && picdir="$HOME/media/memes"
 
 if [ -z "$1" ]; then
 	infile="$picdir/$(ls "$picdir" | dmenu -l 20 -p "infile:")"

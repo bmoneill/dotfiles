@@ -1,6 +1,12 @@
 #!/bin/sh
-# view a roff document
+# roffview - view a roff document using groff and zathura
+# usage: roffview file
 
-PATH="$PLAN9/bin:$PATH"
-
-troff -ms $@ | tr2post | zathura -
+case $1 in
+	*.ms) groff -ms -Tps $1 | zathura - ;;
+	*.mom) groff -mom -Tps $1 | zathura - ;;
+	*.man) groff -man -Tps $1 | zathura - ;;
+	*.mm) groff -mm -Tps $1 | zathura - ;;
+	*.me) groff -me -Tps $1 | zathura - ;;
+	*) echo "unsupported format" >&2 ;;
+esac

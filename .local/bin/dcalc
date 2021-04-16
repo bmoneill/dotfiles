@@ -1,5 +1,6 @@
 #!/bin/sh
-# dmenu calculator
+# dcalc: a calculator
+# usage: dcalc
 
 eq="$(dmenu -p "calc:" </dev/null)"
 [ ! -z "$eq" ] && notify-send "calc" "$(echo "$eq" | bc -l $HOME/.local/lib/bclib 2>&1 | sed 's/-/\\-/')"
