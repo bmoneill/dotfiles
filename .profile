@@ -3,7 +3,7 @@
 export PS1="$USER@$(cat /etc/hostname) \${PWD/#$HOME/'~'} $ "
 
 # add ~/.local/bin to $PATH
-export PATH="$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//'):$PATH"
+export PATH="$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//'):/opt/cross/bin:$PATH"
 
 
 # XDG stuff
@@ -21,7 +21,7 @@ export DVDCSS_CACHE="$XDG_DATA_HOME"/dvdcss
 export GOPATH="$XDG_DATA_HOME"/go
 
 # default programs
-export BROWSER="librewolf"
+export BROWSER="brave"
 export EDITOR="nvim"
 export EMAIL="neomutt"
 export IMAGE="sxiv"
