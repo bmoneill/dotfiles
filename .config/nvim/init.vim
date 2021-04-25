@@ -26,5 +26,6 @@ autocmd BufRead,BufNewFile *.ms set tw=70
 autocmd BufRead,BufNewFile *.[1-9] set filetype=groff
 autocmd BufRead,BufNewFile *.[1-9] set tw=70
 autocmd BufRead,BufNewFile *.txt set tw=70
+autocmd BufRead,BufNewFile *.md set tw=70
 syntax on
 filetype plugin indent on
