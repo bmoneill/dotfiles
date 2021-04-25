@@ -35,7 +35,11 @@ syncandnotify() {
     fi
 }
 
-accounts="$(awk '/^Channel/ {print $2}' "$XDG_CONFIG_HOME"/isync/mbsyncrc)"
+if [ ! -z "$@" ]; then
+	accounts="$@"
+else
+	accounts="$(awk '/^Channel/ {print $2}' "$XDG_CONFIG_HOME"/isync/mbsyncrc)"
+fi
 
 # main loop
 for account in $accounts
