@@ -21,7 +21,7 @@ export DVDCSS_CACHE="$XDG_DATA_HOME"/dvdcss
 export GOPATH="$XDG_DATA_HOME"/go
 
 # default programs
-export BROWSER="brave"
+export BROWSER="chromium"
 export EDITOR="nvim"
 export EMAIL="neomutt"
 export IMAGE="sxiv"

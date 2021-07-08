@@ -1,10 +1,11 @@
-#!/bin/sh
+j!/bin/sh
 
 # colors
 alias ls="ls --group-directories-first --color=auto"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias less="less -R"
+alias chromium="chromium --force-dark-mode"
 
 # xdg shortcuts
 alias calcurse="calcurse -C $HOME/.config/calcurse -D $HOME/.local/share/calcurse"
