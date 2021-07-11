@@ -8,23 +8,28 @@ Bits are taken from
 
 ## Programs Included
 
-Config files for the following programs are included:
+Configuration files for the following programs are included:
 
-* bc
-* calcurse
-* dunst
-* newsboat
-* neovim
-* systemd
+* [bc](https://man.openbsd.org/bc.1)
+* [calcurse](https://github.com/lfos/calcurse)
+* [dunst](https://dunst-project.org/)
+* [isync](https://isync.sourceforge.io/)
+* [khard](https://github.com/scheibler/khard)
+* [MPD](https://www.musicpd.org/)
+* [msmtp](https://marlam.de/msmtp/)
+* [NeoMutt](https://neomutt.org/)
+* [Neovim](https://neovim.io/)
+* [Newsboat](https://newsboat.org/)
+* [Notmuch](https://notmuchmail.org/)
+* [systemd](https://systemd.io/)
+* [vdirsyncer](https://github.com/pimutils/vdirsyncer)
 
 ## Programs not included
 
-These are a few of the programs I use often but are not included in
-this repository:
+Listed below are a few of the programs I use often but are not
+included in this repository:
 
 * dwm
-* khard
-* isync, msmtp, neomutt, notmuch
 * st
 * sxiv
 * zathura
