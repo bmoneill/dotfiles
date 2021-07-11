@@ -1,4 +1,4 @@
-j!/bin/sh
+#!/bin/sh
 
 # colors
 alias ls="ls --group-directories-first --color=auto"
