@@ -5,5 +5,7 @@ dunst &
 unclutter &
 xcompmgr &
 slstatus &
+pulseaudio &
+mpd &
 
 exec dwm
