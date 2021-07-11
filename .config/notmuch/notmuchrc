@@ -1,0 +1,15 @@
+# example config file for notmuch
+[database]
+path=~/.local/share/mail
+[user]
+name=My Name
+primary_email=me@example.com
+[new]
+tags=unread;inbox;
+ignore=
+[search]
+exclude_tags=deleted;spam;
+[maildir]
+synchronize_flags=true
+[crypto]
+gpg_path=~/.local/share/gnupg

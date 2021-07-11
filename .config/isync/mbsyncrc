@@ -1,0 +1,51 @@
+# example isync/mbsync config file
+
+#example
+IMAPStore me@example.com-remote
+Host mail.example.com
+Port  993
+User me@example.com
+PassCmd "gpg -q --decrypt ~/.local/share/mailpass/example.gpg"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore me@example.com-local
+Subfolders Verbatim
+Path ~/.local/share/mail/me@example.com/
+Inbox ~/.local/share/mail/me@example.com/INBOX
+Flatten .
+
+Channel me@example.com
+Expunge Both
+Far :me@example.com-remote:
+Near :me@example.com-local:
+Patterns * !"[Gmail]/All Mail"
+Create Both
+SyncState *
+MaxMessages 0
+ExpireUnread no
+
+#example2
+IMAPStore me2@example.com-remote
+Host mail.example.com
+Port  993
+User me2@example.com
+PassCmd "gpg -q --decrypt ~/.local/share/mailpass/example2.gpg"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore me2@example.com-local
+Subfolders Verbatim
+Path ~/.local/share/mail/me2@example.com/
+Inbox ~/.local/share/mail/me2@example.com/INBOX
+Flatten .
+
+Channel me2@example.com
+Expunge Both
+Far :me2@example.com-remote:
+Near :me2@example.com-local:
+Patterns * !"[Gmail]/All Mail"
+Create Both
+SyncState *
+MaxMessages 0
+ExpireUnread no
