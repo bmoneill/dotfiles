@@ -29,7 +29,7 @@ Configuration files for the following programs are included:
 Listed below are a few of the programs I use often but are not
 included in this repository:
 
-* dwm
-* st
-* sxiv
-* zathura
+* [dwm](https://dwm.suckless.org/)
+* [st](https://st.suckless.org/)
+* [sxiv](https://github.com/muennich/sxiv)
+* [zathura](https://pwmt.org/projects/zathura/)
