@@ -1,5 +1,5 @@
 #!/bin/sh
-# view markdown file in lynx(1) using smu(1)
+# compile markdown file and view in lynx(1)
 # usage: mdview [file]
 
 smu $1 | lynx -stdin
