@@ -6,6 +6,7 @@ case $1 in
 	*.ms) groff -ms -Tps $1 | zathura - ;;
 	*.mom) groff -mom -Tps $1 | zathura - ;;
 	*.man) groff -man -Tps $1 | zathura - ;;
+	*.[1-9]) groff -man -Tps $1 | zathura - ;;
 	*.mm) groff -mm -Tps $1 | zathura - ;;
 	*.me) groff -me -Tps $1 | zathura - ;;
 	*) echo "unsupported format" >&2 ;;
