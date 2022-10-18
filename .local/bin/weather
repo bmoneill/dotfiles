@@ -1,0 +1,4 @@
+#!/bin/sh
+# send current weather as notification
+
+notify-send "$(curl -s "wttr.in/?format=j1" | jq -Mr ". | \"Weather in \" + .nearest_area[0].areaName[0].value + \":\n\" + .current_condition[0].weatherDesc[0].value + \"\nTemperature: \" + .current_condition[0].temp_F + \"°F\nWindspeed: \" + .current_condition[0].windspeedMiles + \"mph\"")"

@@ -1,0 +1,5 @@
+#!/bin/sh
+# combine video and audio into MP4 file
+# usage: makevid video.mp4 audio.mp3
+
+ffmpeg -i $1 -i $2 -c:v copy -c:a aac out.mp4
