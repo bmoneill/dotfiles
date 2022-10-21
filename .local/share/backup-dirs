@@ -1,0 +1,7 @@
+dl/
+docs/
+media/
+.config/
+.local/share/
+.local/bin/
+.local/src/

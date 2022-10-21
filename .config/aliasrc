@@ -5,7 +5,6 @@ alias ls="ls --group-directories-first --color=auto"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
 alias less="less -R"
-alias chromium="chromium --force-dark-mode"
 
 # xdg shortcuts
 alias calcurse="calcurse -C $HOME/.config/calcurse -D $HOME/.local/share/calcurse"
@@ -14,10 +13,14 @@ alias wget="wget --hsts-file ~/.config/wget/wget-hsts"
 # shortcuts
 alias yt="youtube-dl --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'"
 alias yta="yt -x -f bestaudio/best"
+alias hl="highlight -O ansi"
+alias mailread="notmuch tag -unread tag:unread; mailsync"
+alias irc="tmux -L weechat attach-session"
+alias httpd="python -m http.server >log.txt 2>log.txt"
 
 # other
 alias lynx="lynx -vikeys"
-alias mailread="notmuch tag -unread tag:unread; mailsync"
-alias irc="tmux -L weechat attach-session"
 alias mv="mv -i"
 alias rm="rm -I"
+alias bc="bc -l"
+alias lf="lfub"
