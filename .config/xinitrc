@@ -1,11 +1,13 @@
 #!/bin/sh
 
-xset r rate 300 50
+xset r rate 300 50 &
+xrandr &
 dunst &
 unclutter &
-xcompmgr &
 slstatus &
 pulseaudio &
-mpd &
+xwallpaper --center ~/.local/share/wallpaper.jpg &
+setxkbmap -option caps:escape
+xset s off -dpms
 
 exec dwm
