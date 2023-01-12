@@ -1,0 +1,40 @@
+#!/bin/sh
+# vmmgr: QEMU virtual machine manager in dmenu
+# usage: vmmgr [add|run]
+
+. $HOME/.config/user-dirs.dirs
+ISO_BASE="$XDG_DOWNLOAD_DIR"
+DISK_BASE="$HOME/.local/share/vmmgr"
+QEMU_FLAGS="-m 2G"
+QEMU_ARCH="x86_64"
+
+
+add_vm() {
+	name="$(dmenu -p "vm name: " </dev/null)"
+	[ -z $name ] && exit
+	size="$(dmenu -p "disk size (*G, *M,...): " </dev/null)"
+	[ -z $size ] && exit
+	iso="$(ls -1 $ISO_BASE/*.iso | dmenu -p "iso: ")"
+	[ -z $iso ] && exit
+
+	disk="$DISK_BASE/$name.img"
+	qemu-img create -f raw "$disk" "$size"
+	qemu-system-$QEMU_ARCH $QEMU_FLAGS -cdrom "$iso" "$disk"
+}
+
+run_vm() {
+	disk="$(ls -1 $DISK_BASE | sed 's/.img$//' | dmenu -l 10 -p "which vm: ")"
+	[ -z $disk ] && exit
+	qemu-system-$QEMU_ARCH $QEMU_FLAGS $iso $DISK_BASE/$disk.img
+}
+
+mkdir -p $DISK_BASE
+
+if [ "$1" = 'add' ]; then
+	add_vm
+elif [ "$1" = "run" ]; then
+	run_vm
+else
+	echo "unknown command" 1>&2
+	exit 1
+fi
