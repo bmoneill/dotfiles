@@ -5,9 +5,12 @@ xrandr &
 dunst &
 unclutter &
 slstatus &
-pulseaudio &
+pulseaudio -D &
 xwallpaper --center ~/.local/share/wallpaper.jpg &
 setxkbmap -option caps:escape
 xset s off -dpms
+
+eval $(/usr/bin/gnome-keyring-daemon --start --components=secrets)
+export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID
 
 exec dwm
