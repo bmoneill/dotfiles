@@ -11,18 +11,8 @@ Bits are taken from
 Configuration files for the following programs are included:
 
 * [bc](https://man.openbsd.org/bc.1)
-* [calcurse](https://github.com/lfos/calcurse)
 * [dunst](https://dunst-project.org/)
-* [isync](https://isync.sourceforge.io/)
-* [khard](https://github.com/scheibler/khard)
-* [MPD](https://www.musicpd.org/)
-* [msmtp](https://marlam.de/msmtp/)
-* [NeoMutt](https://neomutt.org/)
-* [Neovim](https://neovim.io/)
-* [Newsboat](https://newsboat.org/)
-* [Notmuch](https://notmuchmail.org/)
-* [systemd](https://systemd.io/)
-* [vdirsyncer](https://github.com/pimutils/vdirsyncer)
+* [NeoVim](https://neovim.io/)
 
 ## Programs not included
 

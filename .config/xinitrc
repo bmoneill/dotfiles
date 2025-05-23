@@ -6,7 +6,7 @@ dunst &
 unclutter &
 slstatus &
 pulseaudio -D &
-xwallpaper --center ~/.local/share/wallpaper.jpg &
+xwallpaper --center ~/.local/share/wallpaper.png &
 setxkbmap -option caps:escape
 xset s off -dpms
 

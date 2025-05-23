@@ -1,0 +1,15 @@
+#!/bin/sh
+
+player_status="$(playerctl -p spotify status 2>/dev/null)"
+
+if [ "$player_status" = "Playing" ]; then
+	title="$(playerctl -p spotify metadata 'title')"
+	artist="$(playerctl -p spotify metadata 'artist')"
+	echo "$artist - $title"
+else
+	if [ -z "$player_status" ]; then
+		echo "Stopped"
+	else
+		echo "$player_status"
+	fi
+fi
