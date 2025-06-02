@@ -1,15 +1,16 @@
 #!/bin/sh
 
-power_now=$(cat /sys/class/power_supply/BAT0/energy_now)
-power_full=$(cat /sys/class/power_supply/BAT0/energy_full)
+power_now="$(cat /sys/class/power_supply/BAT0/energy_now)"
+power_full="$(cat /sys/class/power_supply/BAT0/energy_full)"
 percent="$(echo "$power_now / $power_full" | bc -l | cut -c2-3)"
 batstatus="$(cat /sys/class/power_supply/BAT0/status)"
 
-[ "$batstatus" = "Charging" ] && echo "󰂄 $percent%" && exit
-
-if [ "$batstatus" = "Charging" ]; then
+if [ "$percent" = ".0" ]; then
+	echo "󰁹 100%"
+	exit
+elif [ "$batstatus" = "Charging" ]; then
 	echo -n "󰂄"
-if [ "$percent" -lt "10" ]; then
+elif [ "$percent" -lt "10" ]; then
 	echo -n "󰁺"
 elif [ "$percent" -lt "20" ]; then
 	echo -n "󰁻"

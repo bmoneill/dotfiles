@@ -5,7 +5,7 @@
 . $HOME/.config/user-dirs.dirs
 ISO_BASE="$XDG_DOWNLOAD_DIR"
 DISK_BASE="$HOME/.local/share/vmmgr"
-QEMU_FLAGS="-m 2G"
+QEMU_FLAGS="-m 16G -enable-kvm -machine q35 -cpu host -smp 4"
 QEMU_ARCH="x86_64"
 
 
@@ -14,7 +14,7 @@ add_vm() {
 	[ -z $name ] && exit
 	size="$(dmenu -p "disk size (*G, *M,...): " </dev/null)"
 	[ -z $size ] && exit
-	iso="$(ls -1 $ISO_BASE/*.iso | dmenu -p "iso: ")"
+	iso="$(ls -1 $ISO_BASE/*.iso | dmenu -l 10 -p "iso: ")"
 	[ -z $iso ] && exit
 
 	disk="$DISK_BASE/$name.img"
@@ -25,7 +25,7 @@ add_vm() {
 run_vm() {
 	disk="$(ls -1 $DISK_BASE | sed 's/.img$//' | dmenu -l 10 -p "which vm: ")"
 	[ -z $disk ] && exit
-	qemu-system-$QEMU_ARCH $QEMU_FLAGS $iso $DISK_BASE/$disk.img
+	qemu-system-$QEMU_ARCH $QEMU_FLAGS -cdrom $iso $DISK_BASE/$disk.img
 }
 
 mkdir -p $DISK_BASE
