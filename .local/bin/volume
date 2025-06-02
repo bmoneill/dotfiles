@@ -1,0 +1,13 @@
+#!/bin/sh
+
+percent="$(pulsemixer --get-volume | sed 's/ .*//')"
+
+if [ "$percent" -eq "0" ]; then
+	echo -n ""
+elif [ "$percent" -lt "50" ]; then
+	echo -n ""
+else
+	echo -n ""
+fi
+
+echo " $percent%"

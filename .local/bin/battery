@@ -1,0 +1,34 @@
+#!/bin/sh
+
+power_now=$(cat /sys/class/power_supply/BAT0/energy_now)
+power_full=$(cat /sys/class/power_supply/BAT0/energy_full)
+percent="$(echo "$power_now / $power_full" | bc -l | cut -c2-3)"
+batstatus="$(cat /sys/class/power_supply/BAT0/status)"
+
+[ "$batstatus" = "Charging" ] && echo "󰂄 $percent%" && exit
+
+if [ "$batstatus" = "Charging" ]; then
+	echo -n "󰂄"
+if [ "$percent" -lt "10" ]; then
+	echo -n "󰁺"
+elif [ "$percent" -lt "20" ]; then
+	echo -n "󰁻"
+elif [ "$percent" -lt "30" ]; then
+	echo -n "󰁼"
+elif [ "$percent" -lt "40" ]; then
+	echo "󰁻"
+elif [ "$percent" -lt "50" ]; then
+	echo -n "󰁾"
+elif [ "$percent" -lt "60" ]; then
+	echo -n "󰁿"
+elif [ "$percent" -lt "70" ]; then
+	echo -n "󰂀"
+elif [ "$percent" -lt "80" ]; then
+	echo -n "󰂁"
+elif [ "$percent" -lt "90" ]; then
+	echo -n "󰂂"
+else
+	echo -n "󰁹"
+fi
+
+echo " $percent%"
