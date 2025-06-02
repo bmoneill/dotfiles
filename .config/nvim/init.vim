@@ -14,7 +14,6 @@ set lazyredraw
 set noswapfile
 set nobackup
 set number relativenumber
-set bg=light
 set tabstop=4
 set sw=4
 set smartindent
@@ -23,9 +22,4 @@ set noexpandtab
 set showmatch
 set magic
 set wrap linebreak
-
-	
-
-call plug#begin()
-Plug 'jamessan/vim-gnupg'
-call plug#end()
+colorscheme retrobox
