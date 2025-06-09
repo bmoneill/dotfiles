@@ -17,7 +17,7 @@ elif [ "$percent" -lt "20" ]; then
 elif [ "$percent" -lt "30" ]; then
 	echo -n "󰁼"
 elif [ "$percent" -lt "40" ]; then
-	echo "󰁻"
+	echo -n "󰁻"
 elif [ "$percent" -lt "50" ]; then
 	echo -n "󰁾"
 elif [ "$percent" -lt "60" ]; then
