@@ -1,4 +1,5 @@
 #!/bin/bash
+# Installs and configures necessary packages
 
 pkgs_sys=(
     "acpi"
@@ -16,8 +17,6 @@ pkgs_sys=(
     "networkmanager"
     "ntp"
     "openssh"
-    "posix-c-development"
-    "posix-software-development"
     "posix-user-portability"
     "posix-xsi"
     "ufw"
@@ -33,6 +32,8 @@ pkgs_dev=(
     "jq"
     "linux-headers"
     "linux-lts-headers"
+    "posix-c-development"
+    "posix-software-development"
     "python"
     "python-pip"
     "valgrind"
@@ -98,3 +99,24 @@ pkgs_util=(
     "wget"
     "whois"
 )
+
+# install packages ($@)
+install_packages() {
+    pacman -Syu --noconfirm $@
+}
+
+# install dotfiles from $1
+install_dotfiles() {
+    if [ -d "$1" ]; then
+        echo "Installing dotfiles from $1..."
+        cp -rv "$1/.*" "$HOME/"
+    else
+        echo "Dotfiles directory not found: $1"
+    fi
+}
+
+install_packages "${pkgs_sys[@]}"
+install_packages "${pkgs_dev[@]}"
+install_packages "${pkgs_gui[@]}"
+install_packages "${pkgs_util[@]}"
+install_dotfiles .
