@@ -115,8 +115,22 @@ install_dotfiles() {
     fi
 }
 
+enable_services() {
+    for service in "$@"; do
+        systemctl enable --now "$service"
+        systemctl start "$service"
+    done
+}
+
 install_packages "${pkgs_sys[@]}"
 install_packages "${pkgs_dev[@]}"
 install_packages "${pkgs_gui[@]}"
 install_packages "${pkgs_util[@]}"
+enable_services \
+    "acpid" \
+    "docker" \
+    "ntpd" \
+    "NetworkManager" \
+    "tlp" \
+    "ufw"
 install_dotfiles .
