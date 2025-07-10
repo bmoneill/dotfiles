@@ -56,13 +56,12 @@ pkgs_gui=(
     "pulsemixer"
     "sxiv"
     "wireshark"
-
     "xautolock"
     "xclip"
     "xorg-server"
     "xorg-xauth"
     "xorg-xbacklight"
-    "xorg-xdpyinfo
+    "xorg-xdpyinfo"
     "xorg-xinit"
     "xorg-xinput"
     "xorg-xkbutils"
@@ -98,5 +97,4 @@ pkgs_util=(
     "tmux"
     "wget"
     "whois"
-
 )
