@@ -14,7 +14,7 @@ alias yta="yt -x -f bestaudio/best"
 alias hl="highlight -O ansi"
 alias httpd="python -m http.server >log.txt 2>log.txt"
 alias pvenv="python -m venv"
-alias entervenv="source bin/activate"
+alias entervenv="source .venv/bin/activate"
 alias hl="highlight -O ansi"
 alias brightness="xrandr --output eDP-1 --brightness"
 
