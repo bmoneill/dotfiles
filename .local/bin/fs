@@ -1,0 +1,11 @@
+#!/usr/bin/env expect
+# fs: Open a F# source file interactively
+# usage: fs path
+# deps: expect, dotnet
+
+set input [lindex $argv 0]
+set strippedInput [string range $input 0 [expr {[string length $input] - 4}]]
+spawn dotnet fsi $input
+send "open $strippedInput.$strippedInput;;\n"
+
+interact
