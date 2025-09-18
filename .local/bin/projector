@@ -1,0 +1,6 @@
+#!/bin/sh
+# projector: Add a secondary X display
+# usage: projector primary_dims secondary_dims
+# primary_dims and secondary_dims should be in a format like "1920x1080"
+
+xrandr --output HDMI-1-1 --primary --mode $secondary_dims --output eDP-1 --left-of HDMI-1-1 --mode $primary_dims
