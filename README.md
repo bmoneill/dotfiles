@@ -3,7 +3,8 @@
 These are my personal dotfiles. I probably won't accept most
 contributions unless they are fixes.
 
-Bits are taken from
+[maimpick](.local/bin/maimpick), [mailsync](.local/bin/mailsync), and
+[swallow](.local/bin/swallow) are taken from
 [Luke Smith's dotfiles](https://github.com/lukesmithxyz/voidrice).
 
 ## Programs Included

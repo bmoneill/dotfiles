@@ -1,5 +1,6 @@
 #!/bin/sh
 # mailsync: sync mail and give notification if there is new mail.
+# Author: Luke Smith
 
 # check internet connection
 ping -q -c 1 1.1.1.1 > /dev/null || exit

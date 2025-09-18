@@ -1,4 +1,5 @@
 #!/bin/sh
+# Author: Luke Smith
 
 # Print various information, option: -v
 verbose=0

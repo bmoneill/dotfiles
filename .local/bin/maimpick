@@ -1,6 +1,7 @@
 #!/bin/sh
 # maimpick: take a screenshot
 # dependencies: dmenu, maim, xclip
+# Author: Luke Smith
 
 case "$(printf "a selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)" | dmenu -l 6 -i -p "Screenshot which area?")" in
 	"a selected area") maim -s $HOME/media/pics/screenshots/pic-selected-"$(date '+%y%m%d-%H%M-%S').png" ;;
