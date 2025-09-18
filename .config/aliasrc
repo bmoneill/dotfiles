@@ -4,6 +4,7 @@
 alias ls="ls --group-directories-first --color=auto"
 alias grep="grep --color=auto"
 alias diff="diff --color=auto"
+alias less="less -R"
 
 # xdg shortcuts
 alias wget="wget --hsts-file ~/.config/wget/wget-hsts"
@@ -17,9 +18,12 @@ alias pvenv="python -m venv"
 alias entervenv="source .venv/bin/activate"
 alias hl="highlight -O ansi"
 alias brightness="xrandr --output eDP-1 --brightness"
+alias gitclean="git clean -f -d -x"
+alias brightness="xrandr --output eDP-1 --brightness"
 
 # other
 alias lynx="lynx -vikeys"
 alias mv="mv -i"
 alias rm="rm -I"
-alias bc="bc -ql"
+alias bc="bc -ql ~/.local/lib/bclib"
+
