@@ -1,0 +1,4 @@
+#!/bin/sh
+# vpnstatus: Get status of Mullvad VPN
+
+mullvad status | head -n1
