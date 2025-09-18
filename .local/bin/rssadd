@@ -1,5 +1,6 @@
 #!/bin/sh
 # rssadd: add a rss feed to newsboat
+# usage: rssadd url
 
 
 RSSCONF="$HOME/.config/newsboat/urls"

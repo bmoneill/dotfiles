@@ -1,6 +1,7 @@
 #!/bin/sh
-# roffview - view a roff document using groff and zathura
+# roffview: view a roff document using groff and zathura
 # usage: roffview file
+# deps: grovv, zathura
 
 case $1 in
 	*.ms) groff -ms -Tps $1 | zathura - ;;

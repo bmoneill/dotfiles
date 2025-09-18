@@ -1,4 +1,0 @@
-#!/bin/sh
-
-ext=$(echo "$1" | awk -F '.' '{print $NF}')
-swallow xdg-open "$1"

@@ -1,4 +1,6 @@
 #!/bin/sh
+# volume: get volume percentage
+# deps: pulsemixer
 
 percent="$(pulsemixer --get-volume | sed 's/ .*//')"
 

@@ -1,4 +1,6 @@
 #!/bin/sh
+# battery: display battery percentage
+# usage: battery
 
 power_now="$(cat /sys/class/power_supply/BAT0/energy_now)"
 power_full="$(cat /sys/class/power_supply/BAT0/energy_full)"

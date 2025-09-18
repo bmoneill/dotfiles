@@ -1,6 +1,7 @@
 #!/bin/sh
 # vmmgr: QEMU virtual machine manager in dmenu
 # usage: vmmgr [add|run]
+# deps: qemu, dmenu
 
 . $HOME/.config/user-dirs.dirs
 ISO_BASE="$XDG_DOWNLOAD_DIR"

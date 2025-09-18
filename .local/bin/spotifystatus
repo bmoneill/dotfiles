@@ -1,4 +1,7 @@
 #!/bin/sh
+# spotifystatus: get spotify status
+# usage: spotifystatus
+# deps: playerctl
 
 player_status="$(playerctl -p spotify status 2>/dev/null)"
 

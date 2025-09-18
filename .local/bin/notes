@@ -1,4 +1,5 @@
 #!/bin/sh
+# notes: edit a file with dmenu
 
 notename="$(dmenu -p "filename" </dev/null)"
 [ -z "$notename" ] && exec $EDITOR /tmp/notes
