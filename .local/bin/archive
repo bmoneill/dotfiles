@@ -1,0 +1,32 @@
+#!/bin/sh
+# archive: Archive files to remote server
+# usage: archive <ssh_key_path> <destination> <path_to_archive>
+# Intended to be used with a Systemd timer.
+# Will not archive files if they haven't been modified in the last day.
+
+SSH_KEY_PATH=$1
+DESTINATION=$2
+PATH_TO_ARCHIVE=$3
+
+usage() {
+    echo "Usage: archive <ssh_key_path> <destination> <path_to_archive>"
+    exit 1
+}
+
+[ -z "$SSH_KEY_PATH" ] && usage
+[ -z "$DESTINATION" ] && usage
+[ -z "$PATH_TO_ARCHIVE" ] && usage
+
+if [ -z "$(find "$PATH_TO_ARCHIVE" -mtime -1)" ]; then
+	echo "Not modified in the last day."
+	exit
+fi
+
+formatted_path="$(basename "$PATH_TO_ARCHIVE" | tr ' ' '_')"
+date="$(date -u +"%Y%m%dT%H%M%SZ")"
+output="/tmp/$formatted_path-$date.tar.gz"
+
+tar -czf "$output" "$1"
+
+scp -O -i $SSH_KEY_PATH -r "$output" "$DESTINATION"
+rm -f "$output"
