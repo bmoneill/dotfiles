@@ -1,0 +1,10 @@
+[Unit]
+Description=Backup
+After=network.target
+
+[Service]
+Type=simple
+StandardOutput=null
+ExecStart=/home/ben/.local/bin/archive "ENTERPATHHERE"
+[Install]
+WantedBy=default.target
