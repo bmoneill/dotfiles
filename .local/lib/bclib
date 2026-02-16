@@ -20,3 +20,13 @@ define c(n,k) {
 define p(n,r) {
 	return(fact(n)/fact(n-r))
 }
+
+/* net present value */
+define npv(c, b, r, t) {
+	return ((b - c) / (1 + r)^t)
+}
+
+/* internal rate of return */
+define irr(c, i) {
+	return c / (1+i)
+}
