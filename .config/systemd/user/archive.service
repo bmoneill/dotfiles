@@ -5,6 +5,6 @@ After=network.target
 [Service]
 Type=simple
 StandardOutput=null
-ExecStart=/home/ben/.local/bin/archive "ENTERPATHHERE"
+ExecStart=/home/ben/.local/bin/archive "~/.config/archive.conf"
 [Install]
 WantedBy=default.target

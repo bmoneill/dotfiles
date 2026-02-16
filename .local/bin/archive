@@ -1,32 +1,40 @@
 #!/bin/sh
-# archive: Archive files to remote server
-# usage: archive <ssh_key_path> <destination> <path_to_archive>
+# archive: Backup files to remote server
+# usage: archive <config_file>
+# Configuration file should be formatted like so:
+#  - First line: SSH Key path
+#  - Second line: Destination
+#  - The rest of the file should contain newline-separated paths to archive
 # Intended to be used with a Systemd timer.
 # Will not archive files if they haven't been modified in the last day.
 
-SSH_KEY_PATH=$1
-DESTINATION=$2
-PATH_TO_ARCHIVE=$3
+
+DEFAULT_CONFIG_PATH="$HOME/.config/archive.conf"
 
 usage() {
-    echo "Usage: archive <ssh_key_path> <destination> <path_to_archive>"
+    echo "Usage: archive <config_file>"
     exit 1
 }
 
-[ -z "$SSH_KEY_PATH" ] && usage
-[ -z "$DESTINATION" ] && usage
-[ -z "$PATH_TO_ARCHIVE" ] && usage
+CONFIG_PATH="$1"
+[ -z "$CONFIG_PATH" ] && CONFIG_PATH="$DEFAULT_CONFIG_PATH"
 
-if [ -z "$(find "$PATH_TO_ARCHIVE" -mtime -1)" ]; then
+SSH_KEY_PATH=$(head -n 1 "$CONFIG_PATH")
+DESTINATION=$(head -n 2 "$CONFIG_PATH" | tail -n 1)
+PATHS=$(tail -n +3 "$CONFIG_PATH")
+
+for path in $PATHS; do
+    if [ -z "$(find "$path" -mtime -1)" ]; then
 	echo "Not modified in the last day."
 	exit
-fi
+    fi
 
-formatted_path="$(basename "$PATH_TO_ARCHIVE" | tr ' ' '_')"
-date="$(date -u +"%Y%m%dT%H%M%SZ")"
-output="/tmp/$formatted_path-$date.tar.gz"
+    formatted_path="$(basename "$path" | tr ' ' '_')"
+    date="$(date -u +"%Y%m%dT%H%M%SZ")"
+    output="/tmp/$formatted_path-$date.tar.gz"
 
-tar -czf "$output" "$1"
+    tar -czf "$output" "$path"
 
-scp -O -i $SSH_KEY_PATH -r "$output" "$DESTINATION"
-rm -f "$output"
+    scp -O -i $SSH_KEY_PATH -r "$output" "$DESTINATION" || (echo "Failed to archive $path" && exit 1)
+    rm -f "$output"
+done
