@@ -11,16 +11,17 @@ contributions unless they are fixes.
 
 Configuration files for the following programs are included:
 
-* [bc](https://man.openbsd.org/bc.1)
-* [dunst](https://dunst-project.org/)
-* [NeoVim](https://neovim.io/)
+- [bc](https://man.openbsd.org/bc.1)
+- [dunst](https://dunst-project.org/)
+- [NeoVim](https://neovim.io/)
+- [zed](https://zed.dev/)
 
 ## Programs not included
 
 Listed below are a few of the programs I use often but are not
 included in this repository:
 
-* [dwm](https://dwm.suckless.org/)
-* [st](https://st.suckless.org/)
-* [sxiv](https://github.com/muennich/sxiv)
-* [zathura](https://pwmt.org/projects/zathura/)
+- [dwm](https://dwm.suckless.org/)
+- [st](https://st.suckless.org/)
+- [sxiv](https://github.com/muennich/sxiv)
+- [zathura](https://pwmt.org/projects/zathura/)
